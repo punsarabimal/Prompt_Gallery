@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidPrompt(data) {
+      return data.keys().hasAll(['title', 'prompt', 'category', 'imageUrl', 'imagePath', 'createdAt', 'createdBy'])
+        && data.keys().size() == 7
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 200
+        && data.prompt is string && data.prompt.size() > 0 && data.prompt.size() <= 5000
+        && data.category is string && data.category.size() > 0 && data.category.size() <= 100
+        && data.imageUrl is string && data.imageUrl.size() > 0 && data.imageUrl.size() <= 2000
+        && data.imagePath is string && data.imagePath.size() <= 1000
+        && data.createdBy is string && data.createdBy == request.auth.uid;
+    }
+
+    match /prompts/{promptId} {
+      // Public can read prompt entries
+      allow read: if true;
+      
+      // Creating requires a signed-in admin, valid payload, and matching author UID
+      allow create: if isSignedIn()
+        && isValidId(promptId)
+        && isValidPrompt(request.resource.data)
+        && request.resource.data.createdAt == request.time;
+        
+      // Deleting requires being signed-in
+      allow delete: if isSignedIn();
+      
+      // No updates needed by design (only upload & delete are requested)
+      allow update: if false;
+    }
+  }
+}

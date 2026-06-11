@@ -1,0 +1,6 @@
+{
+  "name": "Dynamic AI Prompt Gallery",
+  "description": "A premium dark-themed AI Prompt Gallery showcasing stunning AI generated images with respective prompts and categories. Includes a secure admin upload and management dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

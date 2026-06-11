@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Prompt Gallery</title>
+    <link rel="icon" type="image/jpeg" href="/src/assets/images/site_logo_1781200506583.jpg" />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="bg-[#0F0F12] text-[#F3F4F6] min-h-full flex flex-col antialiased selection:bg-[#8B5CF6] selection:text-white">
+    
+    <!-- Header / Glassmorphism Navbar -->
+    <header class="glass-nav sticky top-0 z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-[#8B5CF6]/30 border border-[#8B5CF6]/30 bg-[#1A1A22] flex items-center justify-center">
+              <img src="/src/assets/images/site_logo_1781200506583.jpg" alt="AI Prompt Gallery Logo" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div>
+              <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-[#F3F4F6] to-[#A78BFA] bg-clip-text text-transparent">AI Prompt Gallery</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-4">
+            <a href="/admin/index.html" class="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-[#8B5CF6]/10 text-sm font-medium rounded-xl border border-white/10 hover:border-[#8B5CF6]/45 text-[#9CA3AF] hover:text-[#F3F4F6] transition-all duration-300">
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+              <span>Admin Dashboard</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      
+      <!-- Hero Intro Banner Section -->
+      <section class="text-center mb-12 max-w-2xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-[#F3F4F6]">
+          Discover & Copy the Best <span class="bg-gradient-to-r from-[#8B5CF6] to-[#A78BFA] bg-clip-text text-transparent">AI Prompts</span>
+        </h1>
+        <p class="text-sm sm:text-base text-[#9CA3AF] leading-relaxed">
+          Browse our curated gallery of stunning AI-generated art. Copy high-performing prompts with a single click to ignite your next Midjourney, DALL-E, or Stable Diffusion creation.
+        </p>
+      </section>
+
+      <!-- Search & Filters Container -->
+      <section class="mb-12 space-y-6">
+        
+        <!-- Search Bar -->
+        <div class="relative max-w-2xl mx-auto p-0.5 rounded-2xl bg-white/5 focus-within:bg-[#8B5CF6]/30 transition-all duration-300">
+          <div class="relative flex items-center bg-[#1A1A22] rounded-[14px]">
+            <i data-lucide="search" class="absolute left-4 w-5 h-5 text-[#9CA3AF]"></i>
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Search by title, prompt keyword, or category..." 
+              class="w-full pl-12 pr-4 py-4 bg-transparent outline-none text-[#F3F4F6] placeholder-[#9CA3AF]/60 text-sm sm:text-base rounded-[14px]"
+            />
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap items-center justify-center gap-2" id="filterContainer">
+          <button data-category="All" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#8B5CF6] text-white shadow-lg shadow-[#8B5CF6]/25 border border-transparent">
+            All
+          </button>
+          <button data-category="Photorealistic" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#1A1A22] text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-white/5 border border-white/5 hover:border-[#8B5CF6]/30">
+            Photorealistic
+          </button>
+          <button data-category="Anime & Manga" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#1A1A22] text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-white/5 border border-white/5 hover:border-[#8B5CF6]/30">
+            Anime & Manga
+          </button>
+          <button data-category="Sci-Fi & Cyberpunk" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#1A1A22] text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-white/5 border border-white/5 hover:border-[#8B5CF6]/30">
+            Sci-Fi & Cyberpunk
+          </button>
+          <button data-category="Fantasy & Myth" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#1A1A22] text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-white/5 border border-white/5 hover:border-[#8B5CF6]/30">
+            Fantasy & Myth
+          </button>
+          <button data-category="Abstract & 3D" class="filter-btn px-5 py-2 text-sm font-medium rounded-full cursor-pointer transition-all duration-200 bg-[#1A1A22] text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-white/5 border border-white/5 hover:border-[#8B5CF6]/30">
+            Abstract & 3D
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Gallery Grid -->
+      <section>
+        
+        <!-- Loading State -->
+        <div id="loadingState" class="flex flex-col items-center justify-center py-20 gap-4">
+          <div class="w-12 h-12 border-4 border-[#8B5CF6] border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-[#9CA3AF]">Initializing AI Canvas...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden flex flex-col items-center justify-center py-20 text-center max-w-md mx-auto">
+          <h3 class="text-lg font-semibold text-[#F3F4F6] mb-1">No Prompts Found</h3>
+          <p class="text-sm text-[#9CA3AF]">We couldn't find any prompts matching your search filters. Try tweaking your keywords or category choice!</p>
+        </div>
+
+        <!-- Grid Container -->
+        <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <!-- Dynamically Fed via JS -->
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Detailed Modal -->
+    <div id="detailModal" class="fixed inset-0 z-100 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+      <div class="relative w-full max-w-4xl bg-[#1A1A22] border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl animate-fade-in flex flex-col md:flex-row max-h-[90vh]">
+        
+        <!-- Close Button -->
+        <button id="closeModalBtn" class="absolute top-4 right-4 z-10 p-2 bg-black/60 hover:bg-[#8B5CF6] text-[#F3F4F6] rounded-full transition-colors duration-200 cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Image Pane -->
+        <div class="w-full md:w-1/2 bg-black flex items-center justify-center overflow-hidden min-h-[300px] md:min-h-[450px]">
+          <img id="modalImage" src="" alt="Prompt Visual" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Details Pane -->
+        <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto max-h-[45vh] md:max-h-[90vh]">
+          <div>
+            <!-- Category Badge -->
+            <span id="modalCategory" class="inline-block px-3 py-1 bg-[#8B5CF6]/10 text-[#8B5CF6] border border-[#8B5CF6]/20 text-xs font-semibold tracking-wide rounded-full mb-3">Category</span>
+            
+            <!-- Title -->
+            <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-[#F3F4F6] tracking-tight mb-4">Artwork Title</h2>
+            
+            <!-- Prompt Display Box -->
+            <div class="space-y-2 mb-6">
+              <span class="text-xs font-medium uppercase tracking-widest text-[#9CA3AF]">Core Prompt</span>
+              <div class="relative p-4 rounded-xl bg-white/5 border border-white/10 text-sm leading-relaxed text-[#F3F4F6] select-all max-h-[160px] overflow-y-auto">
+                <p id="modalPromptText" class="whitespace-pre-wrap pr-6">Direct prompt text goes here...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3">
+            <button id="modalCopyBtn" class="flex-grow flex items-center justify-center gap-2 px-6 py-3 bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-95 text-white font-medium rounded-xl shadow-lg shadow-[#8B5CF6]/20 transition-all duration-200 cursor-pointer">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+              <span id="modalCopyBtnText">Copy Prompt</span>
+            </button>
+            <a id="modalDownloadLink" href="" target="_blank" class="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 active:scale-95 text-[#F3F4F6] border border-white/10 font-medium rounded-xl transition-all duration-200" download>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+              <span>Open Source</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-150 flex flex-col gap-2"></div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-8 border-t border-white/5 bg-black/20 text-center text-xs text-[#9CA3AF]">
+      <div class="max-w-7xl mx-auto px-4">
+        <p>&copy; 2026 Dynamic AI Prompt Gallery. Powered by Firebase + Vanilla Javascript.</p>
+      </div>
+    </footer>
+
+    <!-- JS User controller -->
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

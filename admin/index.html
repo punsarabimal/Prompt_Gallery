@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Workspace | Prompt Gallery</title>
+    <link rel="icon" type="image/jpeg" href="/src/assets/images/site_logo_1781200506583.jpg" />
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="bg-[#0F0F12] text-[#F3F4F6] min-h-full flex flex-col antialiased selection:bg-[#8B5CF6] selection:text-white">
+
+    <!-- Header Glass Navbar -->
+    <header class="glass-nav sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          
+          <!-- Logo & Admin tag -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-[#8B5CF6]/30 border border-[#8B5CF6]/30 bg-[#1A1A22] flex items-center justify-center">
+              <img src="/src/assets/images/site_logo_1781200506583.jpg" alt="AI Prompt Gallery Logo" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div>
+              <span class="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
+                AI Gallery Studio
+                <span class="px-2 py-0.5 text-[9px] font-bold tracking-widest text-[#8B5CF6] bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 uppercase rounded-full">Workspace</span>
+              </span>
+              <span id="adminEmailText" class="text-[10px] font-mono text-[#9CA3AF]">Loading session...</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-3">
+            <a href="/index.html" class="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-[#9CA3AF] hover:text-[#F3F4F6] transition-colors">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              <span>View Gallery</span>
+            </a>
+            <button id="logoutBtn" class="flex items-center gap-2 px-4 py-2 bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white text-xs font-bold uppercase tracking-wider rounded-xl border border-rose-500/20 hover:border-transparent transition-all duration-300 cursor-pointer">
+              <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+              <span>Sign Out</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- MODULE 1: Secure Upload Form (Span 5) -->
+        <section class="lg:col-span-5 space-y-6">
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#1A1A22] border border-white/10 shadow-xl overflow-hidden relative">
+            
+            <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-2.5">
+              <i data-lucide="cloud-upload" class="w-5 h-5 text-[#8B5CF6]"></i>
+              <span>Publish AI Artwork</span>
+            </h2>
+
+            <form id="uploadForm" class="space-y-5">
+              
+              <!-- Title Input -->
+              <div class="space-y-1.5 text-left">
+                <label for="promptTitle" class="text-xs font-bold tracking-wider uppercase text-[#9CA3AF] block">Artwork Title</label>
+                <div class="flex items-center bg-white/5 border border-white/5 focus-within:border-[#8B5CF6]/45 focus-within:bg-[#0F0F12] rounded-xl transition-all duration-200">
+                  <input 
+                    type="text" 
+                    id="promptTitle" 
+                    required
+                    placeholder="e.g., Cyberpunk Rain Alley" 
+                    class="w-full px-4 py-3 bg-transparent outline-none text-[#F3F4F6] text-sm placeholder-[#9CA3AF]/30 rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <!-- Category Dropdown -->
+              <div class="space-y-1.5 text-left">
+                <label for="promptCategory" class="text-xs font-bold tracking-wider uppercase text-[#9CA3AF] block">Category</label>
+                <div class="relative bg-white/5 border border-white/5 focus-within:border-[#8B5CF6]/45 focus-within:bg-[#0F0F12] rounded-xl transition-all duration-200">
+                  <select 
+                    id="promptCategory" 
+                    required 
+                    class="w-full appearance-none px-4 py-3 bg-transparent outline-none text-[#F3F4F6] text-sm rounded-xl cursor-pointer pr-10"
+                  >
+                    <option value="" class="bg-[#1A1A22] text-[#9CA3AF]" disabled selected>Choose a category...</option>
+                    <option value="Photorealistic" class="bg-[#1A1A22] text-[#F3F4F6]">Photorealistic</option>
+                    <option value="Anime & Manga" class="bg-[#1A1A22] text-[#F3F4F6]">Anime & Manga</option>
+                    <option value="Sci-Fi & Cyberpunk" class="bg-[#1A1A22] text-[#F3F4F6]">Sci-Fi & Cyberpunk</option>
+                    <option value="Fantasy & Myth" class="bg-[#1A1A22] text-[#F3F4F6]">Fantasy & Myth</option>
+                    <option value="Abstract & 3D" class="bg-[#1A1A22] text-[#F3F4F6]">Abstract & 3D</option>
+                  </select>
+                  <i data-lucide="chevron-down" class="absolute right-4 top-3.5 w-4 h-4 text-[#9CA3AF] pointer-events-none"></i>
+                </div>
+              </div>
+
+              <!-- Prompt Text Area -->
+              <div class="space-y-1.5 text-left">
+                <label for="promptText" class="text-xs font-bold tracking-wider uppercase text-[#9CA3AF] block">Exact Prompt</label>
+                <div class="flex bg-white/5 border border-white/5 focus-within:border-[#8B5CF6]/45 focus-within:bg-[#0F0F12] rounded-xl transition-all duration-200">
+                  <textarea 
+                    id="promptText" 
+                    required
+                    rows="4"
+                    placeholder="Paste the precise text prompt used to render this image..." 
+                    class="w-full px-4 py-3 bg-transparent outline-none text-[#F3F4F6] text-sm placeholder-[#9CA3AF]/30 rounded-xl resize-none font-mono"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Drag & Drop Uploader Box -->
+              <div class="space-y-1.5 text-left">
+                <label class="text-xs font-bold tracking-wider uppercase text-[#9CA3AF] block">Generated Image File</label>
+                
+                <!-- Silent Input -->
+                <input type="file" id="promptImgFile" class="hidden" accept="image/*" required />
+                
+                <!-- Visual Box -->
+                <div 
+                  id="dropZone"
+                  class="border-2 border-dashed border-white/10 hover:border-[#8B5CF6]/45 bg-white/5 hover:bg-[#8B5CF6]/5 rounded-2xl cursor-pointer transition-all duration-300 p-6 flex flex-col items-center justify-center text-center gap-3 group relative overflow-hidden min-h-[160px]"
+                >
+                  <!-- Active Preview overlay -->
+                  <div id="uploadPreviewContainer" class="absolute inset-0 z-10 hidden bg-black/90 flex-col items-center justify-center p-2">
+                    <img id="uploadPreviewImg" src="" alt="Preview" class="max-h-[120px] object-contain rounded-lg border border-white/15 shadow-md mb-2" />
+                    <button type="button" id="clearPreviewBtn" class="px-2.5 py-1 text-[10px] font-bold tracking-wider text-rose-400 bg-rose-500/10 hover:bg-rose-500 hover:text-white rounded-md border border-rose-500/20 active:scale-95 transition-all">
+                      Remove File
+                    </button>
+                  </div>
+
+                  <div id="dropZonePrompt" class="flex flex-col items-center justify-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-white/5 group-hover:bg-[#8B5CF6]/20 flex items-center justify-center text-[#9CA3AF] group-hover:text-[#8B5CF6] transition-colors duration-300">
+                      <i data-lucide="image" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs font-semibold text-white">Drag & drop your AI output</span>
+                      <span class="text-[10px] text-[#9CA3AF] block mt-0.5">or click to browse local files</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- progress bar container -->
+              <div id="uploadProgressContainer" class="hidden space-y-1">
+                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#9CA3AF]">
+                  <span>Uploading Image...</span>
+                  <span id="uploadProgressText" class="font-mono text-[#8B5CF6]">0%</span>
+                </div>
+                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                  <div id="uploadProgressBar" class="h-full bg-[#8B5CF6]" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <!-- Submit Form button -->
+              <button 
+                type="submit" 
+                id="uploadSubmitBtn"
+                class="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-[#8B5CF6] hover:bg-[#7C3AED] active:scale-95 text-white font-medium rounded-xl shadow-lg shadow-[#8B5CF6]/20 transition-all duration-200 cursor-pointer text-sm font-semibold"
+              >
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span>Publish Item</span>
+              </button>
+
+            </form>
+
+          </div>
+        </section>
+
+        <!-- MODULE 2: Content Management List (Span 7) -->
+        <section class="lg:col-span-7 space-y-6">
+          <div class="p-6 sm:p-8 rounded-2xl bg-[#1A1A22] border border-white/10 shadow-xl min-h-[400px]">
+            
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+              <h2 class="text-lg font-bold text-white flex items-center gap-2.5">
+                <i data-lucide="folder-heart" class="w-5 h-5 text-[#8B5CF6]"></i>
+                <span>Art Inventory</span>
+              </h2>
+              <span id="promptCountBadge" class="px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide bg-[#8B5CF6]/10 text-[#8B5CF6] border border-[#8B5CF6]/20 rounded-full">
+                0 items total
+              </span>
+            </div>
+
+            <!-- Loading Inventory items state -->
+            <div id="inventoryLoading" class="flex flex-col items-center justify-center py-24 gap-4">
+              <div class="w-10 h-10 border-4 border-[#8B5CF6] border-t-transparent rounded-full animate-spin"></div>
+              <p class="text-xs font-medium text-[#9CA3AF]">Querying inventory collections...</p>
+            </div>
+
+            <!-- Empty inventory items state -->
+            <div id="inventoryEmpty" class="hidden flex-col items-center justify-center py-20 text-center max-w-sm mx-auto">
+              <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-3">
+                <i data-lucide="folder-open" class="w-6 h-6 text-[#9CA3AF]"></i>
+              </div>
+              <h3 class="text-sm font-bold text-[#F3F4F6] mb-1">Inventory Empty</h3>
+              <p class="text-xs text-[#9CA3AF]">You haven't uploaded any prompts to your gallery yet. Publish your first prompt using the form to populate the database.</p>
+            </div>
+
+            <!-- Active Inventory Table -->
+            <div id="inventoryList" class="space-y-4 max-h-[600px] overflow-y-auto pr-1">
+              <!-- Inline Fed via JS controller -->
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Global Loading blocker (during active actions) -->
+    <div id="blockingOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-100 hidden items-center justify-center">
+      <div class="flex flex-col items-center gap-3 p-6 bg-[#1A1A22] border border-white/10 rounded-2xl shadow-xl">
+        <div class="w-10 h-10 border-4 border-[#8B5CF6] border-t-transparent rounded-full animate-spin"></div>
+        <span id="blockingOverlayText" class="text-xs font-bold text-[#F3F4F6] tracking-widest uppercase">Deleting content...</span>
+      </div>
+    </div>
+
+    <!-- Toast system -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-150 flex flex-col gap-2"></div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-8 border-t border-white/5 bg-black/20 text-center text-xs text-[#9CA3AF]">
+      <div class="max-w-7xl mx-auto px-4">
+        <p>&copy; 2026 AI Gallery Admin Workbench. All operations are live & secured.</p>
+      </div>
+    </footer>
+
+    <!-- Admin workflow controller -->
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>

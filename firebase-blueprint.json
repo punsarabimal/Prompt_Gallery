@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Prompt": {
+      "title": "Prompt",
+      "description": "An AI image prompt item in the gallery",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the prompt/artwork"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "The exact textual AI prompt used to generate the image"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the prompt"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "The public download URL of the generated image"
+        },
+        "imagePath": {
+          "type": "string",
+          "description": "The path to the image stored in Cloud Storage (for deletion)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The server-side timestamp when this was uploaded"
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "User ID of the admin who uploaded it"
+        }
+      },
+      "required": ["title", "prompt", "category", "imageUrl", "createdAt", "createdBy"]
+    }
+  },
+  "firestore": {
+    "/prompts/{promptId}": {
+      "schema": "Prompt",
+      "description": "A collection of AI prompts"
+    }
+  }
+}
